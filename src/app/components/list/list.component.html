@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <app-empleados [todos]="obtenerEmpleados()"
+  [masculino]="obtenerMasculino()"
+  [femenino]="obtenerFemenino()"
+  (btn)="radioSelect($event)"
+  ></app-empleados>   
+    <div class="card mt-3">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Legajo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Salario</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let empleado of listEmpleado">
+                <tr *ngIf="radioBtn == 'Todos' || radioBtn == empleado.sexo" >
+                  <th>{{empleado.legajo}}</th>
+                  <td>{{empleado.nombre}}</td>
+                  <td>{{empleado.apellido}}</td>
+                  <td>{{empleado.sexo}}</td>
+                  <td>{{empleado.salario}}</td>
+                </tr>
+              </ng-container>             
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
